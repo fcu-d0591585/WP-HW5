@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WP-HW5_GoogleMap</title>
+	<meta charset="utf-8">
+	<style>
+		#map {
+			height: 100%;
+		}
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="map"></div>
+	<script>
+    	var map;
+        function initMap(){
+			map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 16,
+			center: new google.maps.LatLng(24.178830,120.646650),
+			mapTypeId: 'roadmap'
+			});
+		
+		//下面是圖標
+			var icons = {
+				fcu:{
+				icon:'./fcu.png'
+				},
+				gas:{
+				icon:'./gas.png'
+				},
+				postoffice:{
+				icon:'./postOffice.png'
+				}
+			};
+		
+		//座標連結
+			var features = [
+			{position:new google.maps.LatLng(24.178830, 120.646650),type:'fcu'},
+			{position:new google.maps.LatLng(24.175896, 120.650169),type:'postoffice'},
+			{position:new google.maps.LatLng(24.166626, 120.649476),type:'postoffice'},
+			{position:new google.maps.LatLng(24.173890, 120.647434),type:'postoffice'},
+			{position:new google.maps.LatLng(24.178360, 120.638248),type:'postoffice'},
+			{position:new google.maps.LatLng(24.184505, 120.618242),type:'postoffice'},
+			{position:new google.maps.LatLng(24.183722, 120.604836),type:'postoffice'},
+			{position:new google.maps.LatLng(24.180349, 120.603238),type:'postoffice'},
+			{position:new google.maps.LatLng(),type:'postoffice'},
+			{position:new google.maps.LatLng(),type:'postoffice'},
+			{position:new google.maps.LatLng(),type:'postoffice'},
+			{position:new google.maps.LatLng(24.172279, 120.645541),type:'gas'},
+			{position:new google.maps.LatLng(24.171440, 120.643912),type:'gas'},
+			{position:new google.maps.LatLng(24.172067, 120.660435),type:'gas'},
+			{position:new google.maps.LatLng(24.163570, 120.650049),type:'gas'},
+			{position:new google.maps.LatLng(24.171988, 120.643183),type:'gas'},
+			{position:new google.maps.LatLng(24.172654, 120.646230),type:'gas'},
+			{position:new google.maps.LatLng(24.172184, 120.643526),type:'gas'},
+			{position:new google.maps.LatLng(24.180954, 120.632454),type:'gas'},
+			{position:new google.maps.LatLng(24.188392, 120.619408),type:'gas'},
+			{position:new google.maps.LatLng(24.193481, 120.623141),type:'gas'},
+			{position:new google.maps.LatLng(24.166859, 120.618764),type:'gas'},
+			{position:new google.maps.LatLng(24.166899, 120.619622),type:'gas'},
+			{position:new google.maps.LatLng(24.163375, 120.629750),type:'gas'},
+			{position:new google.maps.LatLng(24.166115, 120.645243),type:'gas'},
+			{position:new google.maps.LatLng(24.184595, 120.630609),type:'gas'}
+			
+			
+			];
+		//建立標記
+			features.forEach(function(feature) {
+				var marker = new google.maps.Marker({
+				position: feature.position,
+				icon: icons[feature.type].icon,
+				map: map
+				});
+			});
+		}
+		
+		
+		
+	</script>
+	
+
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYde_fT-6K9Xy7RD0pkwZ_44L3C8fSNwk&callback=initMap">
+	</script>
+	
+</body>
+</html>
+
+
